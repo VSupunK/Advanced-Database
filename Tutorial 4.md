@@ -1,5 +1,3 @@
-Here’s a sample `README.md` based on the answers provided for Tutorial 04:
-
 # Advanced Database Management Systems - Tutorial 04
 
 This document provides answers to the questions from **Tutorial 04** of the IS5110 - Advanced Database Management Systems course.
