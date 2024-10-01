@@ -1,6 +1,5 @@
 Here’s a sample `README.md` based on the answers provided for Tutorial 04:
 
-```md
 # Advanced Database Management Systems - Tutorial 04
 
 This document provides answers to the questions from **Tutorial 04** of the IS5110 - Advanced Database Management Systems course.
@@ -92,11 +91,3 @@ This document provides answers to the questions from **Tutorial 04** of the IS51
 7. **What is the role of the query optimizer in a DBMS?**
    - The query optimizer selects the most efficient execution plan by analyzing various alternatives and choosing the one with the lowest cost.
 
----
-
-## License
-
-This tutorial document is part of the **IS5110 - Advanced Database Management Systems** course at the **Faculty of Computing, Sabaragamuwa University of Sri Lanka**.
-```
-
-This `README.md` file provides clear and organized answers, suitable for documenting the tutorial content.
