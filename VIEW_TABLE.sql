@@ -18,3 +18,13 @@ INSERT INTO Salary(Company, Account, Amount) VALUES
     ('QRT', '333333', 10000.00),
     ('SSSS', '444444', 5000.00);
 
+5.
+CREATE VIEW Debits AS SELECT * FROM Salary;
+
+
+-- To rename a table
+ALTER TABLE table_name
+RENAME TO new_table_name;
+
+ALTER TABLE Salary
+RENAME TO Bills;
