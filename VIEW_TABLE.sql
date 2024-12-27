@@ -59,3 +59,16 @@ SELECT Bills.Name, Bills.Amount, Bank_Account.Balance, Bank_Account.Bank
 FROM Bills, Bank_Account
 WHERE Bills.Account_ID = Bank_Account.Account_ID;
 
+-- HOW TO GET A LIST OF MYSQL VIEWS?
+
+USE Information_Schema;
+
+SELECT TABLE_SCHEMA, TABLE_NAME
+FROM Information_Schema.TABLES 
+WHERE TABLE_TYPE = 'VIEW';
+
+-- HOW TO GET A LIST OF VIEWS IN A SPECIFIC DATABASE?
+SELECT TABLE_SCHEMA, TABLE_NAME
+FROM information_schema.TABLES
+WHERE TABLE_TYPE = 'VIEW'
+AND TABLE_SCHEMA = 'ADBMS_PRACTICE';
