@@ -18,7 +18,7 @@ INSERT INTO Salary(Company, Account, Amount) VALUES
     ('ABC', '111111', 450.00),
     ('XYZ', '222222', 15000.00),
     ('QRT', '333333', 10000.00),
-    ('SSSS', '444444', 5000.00);
+    ('SSSS', '444444', 5000.00); 
 
 5.
 CREATE VIEW Debits AS SELECT * FROM Salary;
