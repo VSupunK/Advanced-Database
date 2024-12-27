@@ -72,3 +72,12 @@ SELECT TABLE_SCHEMA, TABLE_NAME
 FROM information_schema.TABLES
 WHERE TABLE_TYPE = 'VIEW'
 AND TABLE_SCHEMA = 'ADBMS_PRACTICE';
+
+-- RENAMING COLUMNS
+
+-- The SQL + operator to combine the several fields into one long field
+-- by combining spaces and commas with the character data
+
+CREATE VIEW Envelope (Company, Mailing_Address)
+AS SELECT Name, Address + " " + City + "," + Province
+FROM Company;
