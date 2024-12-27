@@ -1,7 +1,7 @@
 -- Syntax for a Stored Function
 
 CREATE FUNCTION function_name ([parameter1 [...]])
-    RETURN Type
+    RETURNS Type
     [
         LANGUAGE SQL
         | [NOT] DETERMINISTIC
@@ -9,8 +9,21 @@ CREATE FUNCTION function_name ([parameter1 [...]])
         | SQL SECURITY { DEFINER | INVOKER }
         | COMMENT 'string'
     ]
-    SQL statements
+SQL statements
 
     ---------------------------------------
 
-    
+-- A Stored Function Example
+
+mysql> DELIMITER |
+mysql> 
+    CREATE FUNCTION WEIGHTED_AVERAGE (n1 INT, n2 INT, n3 INT, n4 INT)
+    RETURNS INT
+        DETERMINISTIC
+            BEGIN
+                DECLARE average INT;
+                SET average = (n1 + n2 + n3*3 + n4*4) / 8;
+                RETURN average;
+            END|
+
+mysql> SELECT WEIGHTED_AVERAGE(10, 20, 30, 40)\G
