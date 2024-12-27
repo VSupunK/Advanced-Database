@@ -28,7 +28,22 @@ BANK_ACCOUNT.BANK FROM BILLS, BANK_ACCOUNT
 WHERE BILLS.ACCOUNT_ID = BANK_ACCOUNT.ACCOUNT_ID
 AND BANK_ACCOUNT.BALANCE > 500;
 
+-----------------------------------------
+CREATE TABLE Bank_Account (
+    Account_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Balance DOUBLE NOT NULL,
+    Bank VARCHAR(50) NOT NULL,
+    Type VARCHAR(20) NOT NULL
+);
 
+INSERT INTO Bank_Account (Balance, Bank, Type)
+VALUES
+(5000.75, 'Bank of America', 'Savings'),
+(12000.50, 'Wells Fargo', 'Checking'),
+(750.00, 'Chase', 'Business'),
+(9500.25, 'CitiBank', 'Savings'),
+(2200.00, 'PNC Bank', 'Checking');
+-----------------------------------------
 
 -- To rename a table
 ALTER TABLE table_name
@@ -81,3 +96,6 @@ AND TABLE_SCHEMA = 'ADBMS_PRACTICE';
 CREATE VIEW Envelope (Company, Mailing_Address)
 AS SELECT Name, Address + " " + City + "," + Province
 FROM Company;
+
+-- THE DROP VIEW STATEMENT
+DROP VIEW view_name;
