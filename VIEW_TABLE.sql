@@ -42,3 +42,20 @@ RENAME TO Bills;
 CREATE VIEW CreditCard_Debits 
 AS SELECT * FROM Debits 
 WHERE Account_ID = 4;
+
+-- The CREATE VIEW also enables you to select individual
+-- columns from a table and place them in a view
+
+CREATE VIEW Company_Info (Name, City) AS
+SELECT Name, City FROM Company;
+
+Company (Company_ID, Name, City, Type);
+
+-- The CREATE VIEW also enables you to select columns from
+-- several tables and place them in a view
+
+CREATE VIEW Company_Info All_Info (Name, Amount, Balance, Bank) AS
+SELECT Bills.Name, Bills.Amount, Bank_Account.Balance, Bank_Account.Bank
+FROM Bills, Bank_Account
+WHERE Bills.Account_ID = Bank_Account.Account_ID;
+
