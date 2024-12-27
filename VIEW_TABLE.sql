@@ -1,3 +1,5 @@
+-- CREATE VIEW TABLE
+
 1. CREATE DATABASE adbms_practice;
 
 2. USE adbms_practice;
@@ -34,3 +36,9 @@ RENAME TO new_table_name;
 
 ALTER TABLE Salary
 RENAME TO Bills;
+
+-- CREATE NEW VIEWS FROM EXISTING VIEWS
+
+CREATE VIEW CreditCard_Debits 
+AS SELECT * FROM Debits 
+WHERE Account_ID = 4;
