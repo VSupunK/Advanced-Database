@@ -60,6 +60,8 @@ SELECT WEIGHTED_AVERAGE2('Mark') AS Mark\G
 
 -----------------------------------------
 
+DELIMITER |
+
 CREATE FUNCTION WEIGHTED_AVERAGE3 (n1 INT, n2 INT, n3 INT, n4 INT, v1 VARCHAR(50)) 
     RETURNS INT
         DETERMINISTIC
