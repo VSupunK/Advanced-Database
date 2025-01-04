@@ -87,3 +87,20 @@ BEGIN
 
 
 CALL Exercise2_IF_ELSE(100);
+
+-----By using CASE
+
+DELIMITER |
+CREATE PROCEDURE Exercise2_CASE(IN boil_point INT)
+BEGIN 
+CASE boil_point
+WHEN 100 THEN SELECT "Water";
+WHEN 357 THEN SELECT "Mercury";
+WHEN 1187 THEN SELECT "Copper";
+WHEN 2193 THEN SELECT "Silver";
+ELSE SELECT "Substance Unknown";
+END CASE;
+END |
+DELIMITER ;
+
+CALL Exercise2_CASE(357);
