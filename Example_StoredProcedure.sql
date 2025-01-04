@@ -104,3 +104,48 @@ END |
 DELIMITER ;
 
 CALL Exercise2_CASE(357);
+
+----------------
+
+--Exercise 3
+
+Write down a MySQL stored procedure that allows the user to pass the scholarship id as a parameter.
+The procedure should output the new scholarship value according to the conditions given in the table. 
+
+Scholarship value should be read from the table Scholarship.
+
+CREATE TABLE scholarship(
+    sd_ID VARCHAR(20),
+    Organization VARCHAR(30),
+    Amount DOUBLE
+);
+
+INSERT INTO scholarship VALUES
+("S1","UNICEF", 20000),
+("S2","WHO", 40000),
+("S3","ROTARY", 80000),
+("S4","UNESCO", 65000);
+
+----
+
+DELIMITER |
+CREATE PROCEDURE Exercise3 (IN schol_id VARCHAR(10), OUT schol_amount DOUBLE)
+
+BEGIN
+    DECLARE new_amount DOUBLE;
+    SELECT Amount INTO new_amount FROM scholarship WHERE sd_ID = schol_id LIMIT 1;
+
+    IF(new_amount>100000) THEN 
+    SET schol_amount = new_amount + new_amount*(10/100);
+    ELSEIF(new_amount>50000) THEN 
+    SET schol_amount = new_amount + new_amount*(15/100);
+    ELSEIF(new_amount<50000) THEN 
+    SET schol_amount = new_amount + new_amount*(20/100);
+    ELSE
+    SELECT "Individual student ID";
+    ENDIF;
+    END |
+    DELIMITER ;
+    ---
+CALL Exercise3("S1", @schol_amount);
+SELECT @schol_amount;
