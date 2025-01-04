@@ -38,7 +38,7 @@ Create a MySQL stored function that prompts the user to input a string.
 
 The function should output the total number of characters in the string .
 
-String : “ Sabaragamuwa” – input
+String : “ Sabaragamuwa” – input
 Number of characters : 12 -- Output
 ----------------------------
 
@@ -96,3 +96,30 @@ DELIMITER ;
 --
 
 SELECT Calculate_BMI_Value("Usr_04") AS BMI_Value;
+
+-- Exercise 4
+
+Utilize the database “stored_function_class ”
+
+Create a MySQL stored function that prompts the user to input an email address.
+
+The function should return the new email address by replacing certain part of the existing email address .
+
+Old email address : “ sab@gmail.com”
+New email address : “sab@susl.com”
+
+
+---------
+DELIMITER |
+CREATE FUNCTION replace_string(input_email varchar(20))
+returns varchar(20)
+DETERMINISTIC
+BEGIN
+return replace(input_email, "@gmail.com", "@susl.com");
+END |
+
+DELIMITER ;
+
+----
+
+select replace_string("hello@gmail.com") as new_email;
