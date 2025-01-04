@@ -87,4 +87,60 @@ FROM full_home_address;
 
 ----- Creating Views by syncing multiple tables------
 
+create database Employee_db;
+use Employee_db;
 
+create table department(
+    DepId int,
+    DeptName Varchar(28)
+);
+
+insert into department values (1, "IT"), (2, "Payroll"), (3, "HR"), (4, "Admin");
+
+select * from department;
+
+-- Create the Employee table with proper structure
+CREATE TABLE employee (
+    Id INT AUTO_INCREMENT,          -- Employee ID with auto-increment
+    Name VARCHAR(10),               -- Employee name
+    Salary DOUBLE,                  -- Employee salary
+    Gender VARCHAR(10),             -- Employee gender
+    DepartmentID INT,               -- ID of the employee's department
+    PRIMARY KEY (Id)                -- Set 'Id' as the primary key
+);
+
+-- Insert sample data into the Employee table
+INSERT INTO employee (Name, Salary, Gender, DepartmentID)
+VALUES
+    ('Sam', 5000, 'Male', 3),
+    ('John', 6000, 'Male', 2),
+    ('Philip', 8000, 'Male', 1),
+    ('Todd', 5000, 'Female', 4),
+    ('Dinesh', 5500, 'Male', 1),
+    ('Krish', 4800, 'Female', 3);
+
+-- Combining tables using select command
+
+select Id, Name, Salary, Gender, DeptName from employee inner join department
+where employee.departmentID = department.DepId;
+
+-- Combining tables using View
+
+create view viewEmployeesByDepartment
+as 
+select Id, Name, Salary, Gender, DeptName from employee inner join
+department
+where employee.departmentID = department.DepId;
+
+select * from viewEmployeesByDepartment;
+
+-- Retrieve the IDs and names of  the employees corresponding to the IT department
+
+-- Using Select Query
+select Id, Name from employee Left join department 
+on employee.departmentID = department.DepId
+where DeptName="IT";
+
+--Using view
+select ID, Name from viewEmployeesByDepartment
+where DeptName="IT";
