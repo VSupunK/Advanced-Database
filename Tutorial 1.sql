@@ -18,3 +18,14 @@ WHERE Unit_Price < (SELECT avg(Unit_Price) FROM
 techpro); 
 
 SELECT * FROM temp_techpro;
+
+-----------
+
+SELECT AVG(Unit_Price) AS AverageUnitPrice
+FROM techpro;
+
+-----------
+INSERT INTO temp_techpro (ProductName, Unit_Price)
+SELECT DISTINCT Product AS ProductName, Unit_Price 
+FROM techpro
+WHERE Unit_Price < (SELECT AVG(Unit_Price) FROM techpro);
