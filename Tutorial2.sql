@@ -21,8 +21,8 @@ CREATE FUNCTION avg_marks(Stu_ID VARCHAR(5))
 RETURNS DOUBLE
 DETERMINISTIC
 BEGIN
-    DECARE m1 INT, m2 INT, m3 INT, avg DOUBLE;
-    SELECT Match, Science, English INTO FROM m1, m2, m3 FROM Student_marks WHERE Student_ID=Stu_ID;
+    DECLARE m1 INT, m2 INT, m3 INT, avg DOUBLE;
+    SELECT Math, Science, English INTO m1, m2, m3 FROM Student_marks WHERE Student_ID=Stu_ID;
     SET avg = (m1+m2+m3)/3;
     RETURN avg;
 END |
@@ -32,3 +32,39 @@ DELIMITER ;
 SELECT avg_marks('S102');
 
 
+--------------
+
+DELIMITER |
+
+CREATE FUNCTION avg_marks(Stu_ID VARCHAR(5))
+RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+    DECLARE m1 INT;
+    DECLARE m2 INT;
+    DECLARE m3 INT;
+    DECLARE avg DOUBLE;
+    
+    SELECT Math, Science, English INTO m1, m2, m3 FROM Student_Marks WHERE Student_ID = Stu_ID;
+    SET avg = (m1 + m2 + m3) / 3;
+    RETURN avg;
+END |
+
+DELIMITER ;
+
+>> SELECT avg_marks('S102');
+-------------------------
+
+DELIMITER |
+
+CREATE FUNCTION insert_student(StudentID varchar(5), MathMarks(5), ScienceMark INT, EnglishMarks INT)
+RETURNS VARCHAR(50)
+DETERMINISTIC
+BEGIN
+    INSERT INTO Student_Marks (Student_ID, Math, Science, English)
+    VALUES (StudentID, MathMarks, ScienceMarks, EnglishMarks);
+
+    RETURN CONCAT('Student', StudentID, 'insert successfullty.');
+END |
+
+DELIMITER ;
